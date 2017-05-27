@@ -53,10 +53,7 @@ def xm_machine_init():
     else:
         lgl._HOST = "unknown"
     lgl._ARCH = machine()
-    if platform == "win32":
-        lgl._NULDEV = "nul"
-    else:
-        lgl._NULDEV = "/dev/nul"
+    lgl._NULDEV = os.devnull
     version = xm_version()
     lgl._VERSION = "%d.%d.%d.%d" % (version["major"], version["minor"], version["alter"], version["build"])
     lgl._VERSION_SHORT = "%d.%d.%d" % (version["major"], version["minor"], version["alter"])
