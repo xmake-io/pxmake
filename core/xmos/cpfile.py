@@ -1,6 +1,8 @@
 from shutil import copy2
 from xmerrno import set_errno
+from xmtrace import xmtrace
 
+@xmtrace
 def xm_os_cpfile(lua, src, dst):
     try:
         copy2(src, dst)

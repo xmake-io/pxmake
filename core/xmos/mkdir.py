@@ -1,6 +1,8 @@
 from os import makedirs
 from xmerrno import set_errno
+from xmtrace import xmtrace
 
+@xmtrace
 def xm_os_mkdir(lua, ph):
     try:
         makedirs(ph, 0o755, True)

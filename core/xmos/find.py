@@ -1,6 +1,8 @@
 import os
 from os import path
+from xmtrace import xmtrace
 
+@xmtrace
 def xm_os_find(lua, rootdir, pattern, recurse, mode, *args):
     excludes = list(args[0].values()) if args else []
     lgl = lua.globals()
