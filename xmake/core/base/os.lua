@@ -178,7 +178,7 @@ function os.match(pattern, mode)
 
     -- get the excludes
     local excludes = pattern:match("|.*$")
-    if excludes then excludes = excludes:split("|") end
+    if excludes then excludes = excludes:split("|") else excludes = {} end
 
     -- translate excludes
     if excludes then
@@ -196,7 +196,8 @@ function os.match(pattern, mode)
     end
 
     -- translate path and remove some repeat separators
-    pattern = path.translate(pattern:gsub("|.*$", ""))
+    local pattern, _ = pattern:gsub("|.*$", "")
+    pattern = path.translate(pattern)
 
     -- translate mode
     if type(mode) == "string" then
