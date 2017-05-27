@@ -31,3 +31,5 @@ def register(lua):
     xmos.isfile = partial(xm_os_isfile, lua)
     xmos.rmfile = partial(xm_os_rmfile, lua)
     xmos.cpfile = partial(xm_os_cpfile, lua)
+    original_rename = xmos.rename
+    xmos.rename = lambda *args: True if original_rename(*args) == True else False
