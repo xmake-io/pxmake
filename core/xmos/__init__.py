@@ -4,6 +4,7 @@ from xmos.find import xm_os_find
 from xmos.uuid import xm_os_uuid
 from xmos.isdir import xm_os_isdir
 from xmos.rmdir import xm_os_rmdir
+from xmos.mkdir import xm_os_mkdir
 
 def register(lua):
     lua.execute("os = os or {}")
@@ -13,3 +14,4 @@ def register(lua):
     xmos.uuid = partial(xm_os_uuid, lua)
     xmos.isdir = partial(xm_os_isdir, lua)
     xmos.rmdir = partial(xm_os_rmdir, lua)
+    xmos.mkdir = partial(xm_os_mkdir, lua)
