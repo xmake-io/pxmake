@@ -1,5 +1,6 @@
 from shutil import rmtree
 from os import rmdir
+from xmerrno import set_errno
 
 def xm_os_rmdir(lua, ph, *args):
     rmempty = True if args and args[0] == True else False
@@ -8,6 +9,7 @@ def xm_os_rmdir(lua, ph, *args):
             rmdir(ph)
         else:
             rmtree(ph)
-    except OSError:
+    except OSError as e:
+        set_errno(e.errno)
         return False
     return True

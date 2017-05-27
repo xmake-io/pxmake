@@ -16,6 +16,7 @@ from xmos.cpfile import xm_os_cpfile
 from xmos.exists import xm_os_exists
 from xmos.setenv import xm_os_setenv
 from xmos.emptydir import xm_os_emptydir
+from xmos.strerror import xm_os_strerror
 
 def register(lua):
     lua.execute("os = os or {}")
@@ -39,3 +40,4 @@ def register(lua):
     xmos.exists = partial(xm_os_exists, lua)
     xmos.setenv = partial(xm_os_setenv, lua)
     xmos.emptydir = partial(xm_os_emptydir, lua)
+    xmos.strerror = partial(xm_os_strerror, lua)
