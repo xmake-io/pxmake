@@ -4,6 +4,7 @@ from xmtrace import xmtrace
 
 @xmtrace
 def xm_os_find(lua, rootdir, pattern, recurse, mode, *args):
+    rootdir = path.expanduser(rootdir)
     excludes = list(args[0].values()) if args else []
     lgl = lua.globals()
     def judge(phs):
