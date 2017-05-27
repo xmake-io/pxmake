@@ -8,6 +8,6 @@ def xm_os_rmdir(lua, ph, *args):
             rmdir(ph)
         else:
             rmtree(ph)
-    except (OSError, PermissionError, FileNotFoundError, NotADirectoryError):
+    except OSError:
         return False
     return True
