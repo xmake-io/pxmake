@@ -13,6 +13,7 @@ from xmos.tmpdir import xm_os_tmpdir
 from xmos.isfile import xm_os_isfile
 from xmos.rmfile import xm_os_rmfile
 from xmos.cpfile import xm_os_cpfile
+from xmos.exists import xm_os_exists
 
 def register(lua):
     lua.execute("os = os or {}")
@@ -33,3 +34,4 @@ def register(lua):
     xmos.cpfile = partial(xm_os_cpfile, lua)
     original_rename = xmos.rename
     xmos.rename = lambda *args: True if original_rename(*args) == True else False
+    xmos.exists = partial(xm_os_exists, lua)
