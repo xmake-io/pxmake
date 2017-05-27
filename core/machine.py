@@ -19,7 +19,7 @@ def xm_version():
 
 def xm_machine_save_arguments(impl, argc, argv):
     lgl = impl["lua"].globals()
-    lgl._ARGV = impl["lua"].table(*argv)
+    lgl._ARGV = impl["lua"].table(*argv[1:])
 
 def xm_machine_get_project_directory(impl):
     lgl = impl["lua"].globals()
