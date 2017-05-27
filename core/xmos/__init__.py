@@ -8,6 +8,7 @@ from xmos.mkdir import xm_os_mkdir
 from xmos.cpdir import xm_os_cpdir
 from xmos.chdir import xm_os_chdir
 from xmos.mtime import xm_os_mtime
+from xmos.curdir import xm_os_curdir
 
 def register(lua):
     lua.execute("os = os or {}")
@@ -21,3 +22,4 @@ def register(lua):
     xmos.cpdir = partial(xm_os_cpdir, lua)
     xmos.chdir = partial(xm_os_chdir, lua)
     xmos.mtime = partial(xm_os_mtime, lua)
+    xmos.curdir = partial(xm_os_curdir, lua)
