@@ -34,12 +34,12 @@
   - [x] `strcmp`
   - [x] `endswith`
   - [x] `startswith`
-- [ ] `process`
+- [x] `process`
   - [ ] `open`
-  - [ ] `openv`
-  - [ ] `wait`
-  - [ ] `waitlist`
-  - [ ] `close`
+  - [x] `openv`
+  - [x] `wait`
+  - [x] `waitlist`
+  - [x] `close`
 - [ ] `sandbox`
   - [ ] `interactive`
 - [ ] `readline`
