@@ -7,7 +7,6 @@ import xmos
 import xmpath
 import xmstring
 import xmprocess
-import xmxpcall
 
 def xm_version():
     return {
@@ -41,7 +40,6 @@ def xm_machine_init():
     xmpath.register(impl["lua"])
     xmstring.register(impl["lua"])
     xmprocess.register(impl["lua"])
-    xmxpcall.register(impl["lua"])
     pvt = python_version_tuple()
     assert(pvt[0] == '3' and int(pvt[1]) >= 3)
     if platform in ("win32", "cygwin"):
