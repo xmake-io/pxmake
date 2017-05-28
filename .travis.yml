@@ -17,4 +17,5 @@ script:
   - pxmake l --backtrace tests/test.lua
 
 after_success:
+  - coverage combine $(find -name '.coverage')
   - codecov
