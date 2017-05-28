@@ -42,8 +42,8 @@
   - [x] `close`
 - [ ] `sandbox`
   - [ ] `interactive`
-- [ ] `readline`
-  - [ ] `readline`
-  - [ ] `history_list`
-  - [ ] `add_history`
-  - [ ] `clear_history`
+- [x] `readline`
+  - [x] `readline`
+  - [x] `history_list`
+  - [x] `add_history`
+  - [x] `clear_history`
