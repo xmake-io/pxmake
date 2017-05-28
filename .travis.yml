@@ -6,12 +6,15 @@ addons:
     packages:
       - libluajit-5.1-dev
 install:
-  - pip install lupa
+  - pip install lupa coverage codecov
 script:
   - echo "#!/bin/bash" > pxmake
   - echo "export XMAKE_PROGRAM_DIR=$PWD/xmake" >> pxmake
-  - echo "python '$PWD/core/machine.py' \"\$@\"" >> pxmake
+  - echo "coverage run '$PWD/core/machine.py' \"\$@\"" >> pxmake
   - chmod +x pxmake
   - export PATH=$PATH:$PWD
   - pxmake --version
   - pxmake l --backtrace tests/test.lua
+
+after_success:
+  - codecov
