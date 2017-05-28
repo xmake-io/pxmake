@@ -1,0 +1,18 @@
+sudo: false
+language: python
+python: "3.3"
+addons:
+  apt:
+    packages:
+      - libluajit-5.1-dev
+install:
+  - pip install lupa
+script:
+  - echo "export XMAKE_PROGRAM_DIR=$PWD/xmake" > pxmake
+  - echo "python '$PWD/core/machine.py' \"\$@\"" >> pxmake
+  - chmod +x pxmake
+  - export PATH=$PATH:$PWD
+  - pxmake --version
+  - pxmake create -P testprog
+  - cd testprog
+  - pxmake
