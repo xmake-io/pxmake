@@ -8,7 +8,8 @@ addons:
 install:
   - pip install lupa
 script:
-  - echo "export XMAKE_PROGRAM_DIR=$PWD/xmake" > pxmake
+  - echo "#!/bin/bash" > pxmake
+  - echo "export XMAKE_PROGRAM_DIR=$PWD/xmake" >> pxmake
   - echo "python '$PWD/core/machine.py' \"\$@\"" >> pxmake
   - chmod +x pxmake
   - export PATH=$PATH:$PWD
