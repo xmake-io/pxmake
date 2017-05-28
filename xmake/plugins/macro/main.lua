@@ -239,8 +239,8 @@ function _end(macroname)
                 break
             end
 
-            -- ignore "xmake m .." and "xmake macro .."
-            if not cmdline:find("xmake%s+macro%s*") and not cmdline:find("xmake%s+m%s*") then
+            -- ignore "pxmake m .." and "pxmake macro .."
+            if not cmdline:find("pxmake%s+macro%s*") and not cmdline:find("pxmake%s+m%s*") then
 
                 -- save this command line to block
                 table.insert(block, 1, cmdline)
@@ -253,7 +253,7 @@ function _end(macroname)
 
     -- the begin tag not found?
     if not begin then
-        raise("please run: 'xmake macro --begin' first!")
+        raise("please run: 'pxmake macro --begin' first!")
     end
 
     -- patch end tag to the history: cmdlines

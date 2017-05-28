@@ -210,7 +210,7 @@ end
 function option.cmdline()
 
     -- make command 
-    local line = "xmake"
+    local line = "pxmake"
     local argv = xmake._ARGV
     for _, arg in ipairs(argv) do
         if arg:find("%s") then
