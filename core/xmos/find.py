@@ -3,9 +3,9 @@ from os import path
 from xmtrace import xmtrace
 
 @xmtrace
-def xm_os_find(lua, rootdir, pattern, recurse, mode, *args):
+def xm_os_find(lua, rootdir, pattern, recurse, mode, excludes = None):
     rootdir = path.expanduser(rootdir)
-    excludes = list(args[0].values()) if args else []
+    excludes = list(excludes.values()) if excludes != None else []
     lgl = lua.globals()
     def judge(phs):
         res = []

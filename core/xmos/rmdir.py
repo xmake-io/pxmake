@@ -5,8 +5,7 @@ from xmerrno import set_errno
 from xmtrace import xmtrace
 
 @xmtrace
-def xm_os_rmdir(lua, ph, *args):
-    rmempty = True if args and args[0] == True else False
+def xm_os_rmdir(lua, ph, rmempty = False):
     ph = expanduser(ph)
     try:
         if rmempty:
