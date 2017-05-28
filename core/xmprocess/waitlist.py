@@ -5,6 +5,7 @@ from subprocess import TimeoutExpired
 
 @xmtrace
 def xm_process_waitlist(lua, proclist, timeout = None):
+    if timeout < 0: timeout = None
     proclist = list(proclist.values())
     rvlist = [None] * len(proclist)
     def waitprocess(proc, index):
