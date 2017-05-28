@@ -1,0 +1,49 @@
+- [ ] `os`
+  - [x] `argv`
+  - [x] `find`
+  - [x] `uuid`
+  - [x] `isdir`
+  - [x] `rmdir`
+  - [x] `mkdir`
+  - [x] `cpdir`
+  - [x] `chdir`
+  - [x] `mtime`
+  - [ ] `mclock`
+  - [x] `curdir`
+  - [x] `tmpdir`
+  - [x] `isfile`
+  - [x] `rmfile`
+  - [x] `cpfile`
+  - [x] `rename`
+  - [x] `exists`
+  - [x] `setenv`
+  - [x] `getenv`
+  - [x] `emptydir`
+  - [x] `strerror`
+  - [x] `getwinsize`
+  - [ ] `versioninfo`
+  - [ ] `uid`
+  - [ ] `gid`
+  - [ ] `getown`
+- [x] `path`
+  - [x] `relative`
+  - [x] `absolute`
+  - [x] `translate`
+  - [x] `is_absolute`
+- [x] `string`
+  - [x] `strcmp`
+  - [x] `endswith`
+  - [x] `startswith`
+- [ ] `process`
+  - [ ] `open`
+  - [ ] `openv`
+  - [ ] `wait`
+  - [ ] `waitlist`
+  - [ ] `close`
+- [ ] `sandbox`
+  - [ ] `interactive`
+- [ ] `readline`
+  - [ ] `readline`
+  - [ ] `history_list`
+  - [ ] `add_history`
+  - [ ] `clear_history`
