@@ -2,15 +2,16 @@ from threading import Thread
 from xmtrace import xmtrace
 from xmerrno import set_errno
 from subprocess import TimeoutExpired
+import xmprocess.procpool as procpool
 
 @xmtrace
 def xm_process_waitlist(lua, proclist, timeout = None):
     if timeout < 0: timeout = None
-    proclist = list(proclist.values())
+    proclist = [(x, procpool.pool[x]) for x in proclist.values()]
     rvlist = [None] * len(proclist)
     def waitprocess(proc, index):
         try:
-            rvlist[index] = [proc, index + 1, proc.wait(timeout)]
+            rvlist[index] = [proc[0], index + 1, proc[1].wait(timeout)]
         except TimeoutExpired:
             pass
         except OSError as e:
