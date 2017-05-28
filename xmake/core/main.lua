@@ -40,10 +40,10 @@ local history       = require("project/history")
 local menu =
 {
     -- title
-    title = "XMake v" .. xmake._VERSION .. ", The Make-like Build Utility based on Lua"
+    title = "pxmake v" .. xmake._VERSION .. ", The Make-like Build Utility based on Lua reimplement on Python"
 
     -- copyright
-,   copyright = "Copyright (C) 2015-2017 Ruki Wang, ${underline}tboox.org${clear}, ${underline}xmake.io${clear}\nCopyright (C) 2005-2015 Mike Pall, ${underline}luajit.org${clear}"
+,   copyright = "Copyright (C) 2017 TitanSnow\nCopyright (C) 2015-2017 Ruki Wang, ${underline}tboox.org${clear}, ${underline}xmake.io${clear}"
 
     -- the tasks: xmake [task]
 ,   task.menu
@@ -53,19 +53,6 @@ local menu =
 
 -- show logo
 function main._show_logo()
-
-    -- define logo
-    local logo = [[
-                         _        
-    __  ___ __  __  __ _| | ______ 
-    \ \/ / |  \/  |/ _  | |/ / __ \
-     >  <  | \__/ | /_| |   <  ___/
-    /_/\_\_|_|  |_|\__ \|_|\_\____| 
-                         by ruki, ${underline}tboox.org${clear}
-                                      ]]
-
-    -- show logo
-    utils.cprint(logo)
 end
 
 -- show help and version info
