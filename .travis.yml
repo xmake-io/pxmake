@@ -1,4 +1,4 @@
-sudo: false
+sudo: required
 language: python
 python: "3.3"
 addons:
@@ -14,6 +14,4 @@ script:
   - chmod +x pxmake
   - export PATH=$PATH:$PWD
   - pxmake --version
-  - pxmake create -P testprog
-  - cd testprog
-  - pxmake
+  - pxmake l --backtrace tests/test.lua
