@@ -21,7 +21,7 @@
   - [x] `emptydir`
   - [x] `strerror`
   - [x] `getwinsize`
-  - [ ] `versioninfo`
+  - [x] `versioninfo`
   - [ ] `uid`
   - [ ] `gid`
   - [ ] `getown`

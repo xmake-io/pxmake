@@ -18,6 +18,7 @@ from xmos.setenv import xm_os_setenv
 from xmos.emptydir import xm_os_emptydir
 from xmos.strerror import xm_os_strerror
 from xmos.getwinsize import xm_os_getwinsize
+from xmos.versioninfo import xm_os_versioninfo
 
 def register(lua):
     lua.execute("os = os or {}")
@@ -43,3 +44,4 @@ def register(lua):
     xmos.emptydir = partial(xm_os_emptydir, lua)
     xmos.strerror = partial(xm_os_strerror, lua)
     xmos.getwinsize = partial(xm_os_getwinsize, lua)
+    xmos.versioninfo = partial(xm_os_versioninfo, lua)
