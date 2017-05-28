@@ -3,7 +3,7 @@ from xmerrno import set_errno
 from subprocess import TimeoutExpired
 
 @xmtrace
-def xm_process_wait(process, timeout = None):
+def xm_process_wait(lua, process, timeout = None):
     try:
         return 1, process.wait(timeout)
     except TimeoutExpired:
