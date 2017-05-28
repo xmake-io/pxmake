@@ -1,4 +1,3 @@
 def register(lua):
-    lgl = lua.globals()
-    original_xpcall = lgl.xpcall
-    lgl.xpcall = lambda func, errfunc, *args: original_xpcall(lambda: func(*args), errfunc)
+    lua.execute("original_xpcall = xpcall")
+    lua.execute("function xpcall(func, errfunc, ...) local args = {...}; return original_xpcall(function() return func(unpack(args)) end, errfunc) end")
