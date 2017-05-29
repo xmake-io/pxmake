@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+import os
 
 setup(
     name = "pxmake",
@@ -15,5 +16,7 @@ setup(
         "console_scripts": [
             "pxmake = xmmachine:main"
         ]
-    }
+    },
+    data_files = [(root, [os.path.join(root, f) for f in files]) for root, dirs, files in os.walk("xmake")],
+    zip_safe = False
 )
