@@ -1,5 +1,6 @@
 from xmtrace import xmtrace
-from lupa import LuaSyntaxError, LuaError
+from lupa import LuaSyntaxError, LuaError, lua_type
+from sys import stdout
 
 def xm_sandbox_loadline():
     lns = [input("> ")]
@@ -18,7 +19,13 @@ def xm_sandbox_interactive(lua, instance):
     try:
         while True:
             try:
-                print('= ' + str(lgl.setfenv(lgl.loadstring(xm_sandbox_loadline()), instance)()))
+                rv = lgl.setfenv(lgl.loadstring(xm_sandbox_loadline()), instance)()
+                print('= ', end = '')
+                stdout.flush()
+                if lua_type(rv) == 'table':
+                    lgl.table.dump(rv)
+                else:
+                    lgl.print(rv)
             except (LuaSyntaxError, LuaError) as e:
                 print(e)
             except KeyboardInterrupt:
