@@ -9,6 +9,8 @@ This repo, *pxmake*, is the reimplement of xmake machine on Python. Notice that 
 
 pxmake created because to extend API for xmake in C is a little matter. pxmake focuses on reuse python's library and API compatibility with xmake
 
-## Build
+## Install
 
-*Developing*. Up to now there's no build script written. Please read [`.travis.yml`](.travis.yml) to know how to build
+```console
+$ python3 setup.py install
+```
