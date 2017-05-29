@@ -3,6 +3,7 @@ from lupa import LuaRuntime
 from sys import argv, platform
 from platform import python_version_tuple, machine
 import os
+from xmversion import xm_version
 import xmos
 import xmpath
 import xmstring
@@ -12,14 +13,6 @@ try:
     import xmreadline
 except ImportError:
     pass
-
-def xm_version():
-    return {
-        "major": 2,
-        "minor": 1,
-        "alter": 5,
-        "build": 0,
-    }
 
 def xm_machine_save_arguments(impl, argc, argv):
     lgl = impl["lua"].globals()
@@ -80,6 +73,6 @@ def xm_machine_main(impl, argc, argv):
     lgl.dofile(path)
     return lgl._xmake_main()
 
-if __name__ == "__main__":
+def main():
     machine = xm_machine_init()
-    exit(xm_machine_main(machine, len(argv), argv))
+    return xm_machine_main(machine, len(argv), argv)

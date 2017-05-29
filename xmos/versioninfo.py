@@ -1,5 +1,5 @@
 from xmtrace import xmtrace
-from machine import xm_version
+from xmversion import xm_version
 
 @xmtrace
 def xm_os_versioninfo(lua):
