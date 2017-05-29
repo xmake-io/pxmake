@@ -1,3 +1,6 @@
+-- imports
+import("privilege.sudo")
+
 -- main entry
 function main(argv)
 
@@ -20,8 +23,16 @@ function main(argv)
     os.exec("pxmake m -l")
     os.exec("pxmake f --cc=gcc --cxx=g++")
     os.exec("pxmake m buildtest")
+    if sudo.has() then
+        sudo.exec("pxmake install")
+        sudo.exec("pxmake uninstall")
+    end
     os.exec("pxmake f --cc=clang --cxx=clang++ --ld=clang++ --verbose --backtrace")
     os.exec("pxmake m buildtest")
+    if sudo.has() then
+        sudo.exec("pxmake install --all -v --backtrace")
+        sudo.exec("pxmake uninstall -v --backtrace")
+    end
     os.exec("pxmake m -d buildtest")
 
     -- test iphoneos?
