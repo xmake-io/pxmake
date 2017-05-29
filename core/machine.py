@@ -48,7 +48,7 @@ def xm_machine_init():
     xmsandbox.register(impl["lua"])
     try:
         xmreadline.register(impl["lua"])
-    except NameError:
+    except (NameError, AttributeError):
         pass
     pvt = python_version_tuple()
     assert(pvt[0] == '3' and int(pvt[1]) >= 3)
