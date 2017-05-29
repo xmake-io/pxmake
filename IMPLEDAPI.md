@@ -1,4 +1,4 @@
-- [ ] `os`
+- [x] `os`
   - [x] `argv`
   - [x] `find`
   - [x] `uuid`
@@ -22,9 +22,9 @@
   - [x] `strerror`
   - [x] `getwinsize`
   - [x] `versioninfo`
-  - [ ] `uid`
-  - [ ] `gid`
-  - [ ] `getown`
+  - [x] `uid`
+  - [x] `gid`
+  - [x] `getown`
 - [x] `path`
   - [x] `relative`
   - [x] `absolute`
