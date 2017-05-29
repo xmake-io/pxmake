@@ -1,5 +1,5 @@
 from xmtrace import xmtrace
-from lupa import LuaSyntaxError
+from lupa import LuaSyntaxError, LuaError
 
 def xm_sandbox_loadline():
     lns = [input("> ")]
@@ -12,11 +12,12 @@ def xm_sandbox_loadline():
 
 @xmtrace
 def xm_sandbox_interactive(lua, instance):
+    lgl = lua.globals()
     try:
         while True:
             try:
-                print('= ' + str(lua.execute(xm_sandbox_loadline())))
-            except LuaSyntaxError as e:
+                print('= ' + str(lgl.setfenv(lgl.loadstring(xm_sandbox_loadline()), instance)()))
+            except (LuaSyntaxError, LuaError) as e:
                 print(e)
             except KeyboardInterrupt:
                 print("\nEOF or `os.exit()` to exit")
