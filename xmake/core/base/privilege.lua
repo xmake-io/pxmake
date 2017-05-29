@@ -39,8 +39,8 @@ function privilege.store()
     local owner = {}
     -- sudo will set SUDO_UID & SUDO_GID
     -- so that can easily get original uid & gid
-    local sudo_uid = os.getenv("SUDO_UID")
-    local sudo_gid = os.getenv("SUDO_GID")
+    local sudo_uid = tonumber(os.getenv("SUDO_UID"))
+    local sudo_gid = tonumber(os.getenv("SUDO_GID"))
     if sudo_uid and sudo_gid then
         owner.uid = sudo_uid
         owner.gid = sudo_gid
