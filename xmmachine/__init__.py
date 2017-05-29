@@ -28,7 +28,7 @@ def xm_machine_get_program_file(impl):
 
 def xm_machine_get_program_directory(impl):
     lgl = impl["lua"].globals()
-    lgl._PROGRAM_DIR = path = os.path.abspath(os.getenv("XMAKE_PROGRAM_DIR"))
+    lgl._PROGRAM_DIR = path = os.path.abspath(os.getenv("XMAKE_PROGRAM_DIR")) if os.getenv("XMAKE_PROGRAM_DIR") else os.path.abspath(os.path.join(__file__, "..", "..", "xmake"))
     return path
 
 def xm_machine_init():
