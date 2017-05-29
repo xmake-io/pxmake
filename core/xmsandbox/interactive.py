@@ -3,6 +3,8 @@ from lupa import LuaSyntaxError, LuaError
 
 def xm_sandbox_loadline():
     lns = [input("> ")]
+    if not lns[0]:
+        return ''
     if lns[0][0] == '=':
         lns[0] = 'return' + lns[0][1:]
     while lns[-1][-1] == '\\':
