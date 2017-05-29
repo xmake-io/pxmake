@@ -15,7 +15,7 @@ def xm_sandbox_interactive(lua, instance):
     try:
         while True:
             try:
-                print(lua.execute(xm_sandbox_loadline()))
+                print('= ' + str(lua.execute(xm_sandbox_loadline())))
             except LuaSyntaxError as e:
                 print(e)
             except KeyboardInterrupt:
