@@ -40,8 +40,8 @@
   - [x] `wait`
   - [x] `waitlist`
   - [x] `close`
-- [ ] `sandbox`
-  - [ ] `interactive`
+- [x] `sandbox`
+  - [x] `interactive`
 - [x] `readline`
   - [x] `readline`
   - [x] `history_list`
