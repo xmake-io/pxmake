@@ -22,3 +22,8 @@ before_build:
 
 build_script:
   - cmd: python setup.py install
+  - cmd: pxmake --version
+  - cmd: pxmake l versioninfo
+
+test_script:
+  - cmd: pxmake l --backtrace tests/test.lua
