@@ -15,7 +15,7 @@ def xm_sandbox_loadline():
 
 @xmtrace
 def xm_sandbox_interactive(lua, instance):
-    lgl = lua.globals()
+    instance["__global__"] = lgl = lua.globals()
     try:
         while True:
             try:
@@ -32,3 +32,5 @@ def xm_sandbox_interactive(lua, instance):
                 print("\nEOF or `os.exit()` to exit")
     except EOFError:
         pass
+    finally:
+        instance["__global__"] = None
