@@ -5,7 +5,7 @@ from xmtrace import xmtrace
 @xmtrace
 def xm_os_mtime(lua, ph):
     try:
-        return int(getmtime(expanduser(ph)))
+        return getmtime(expanduser(ph))
     except OSError as e:
         set_errno(e.errno)
         return 0
