@@ -2,6 +2,7 @@ import lupa
 from lupa import LuaRuntime
 from sys import argv, platform
 from platform import python_version_tuple, machine
+from re import fullmatch
 import os
 from xmversion import xm_version
 import xmbuiltins
@@ -45,8 +46,6 @@ def xm_machine_init():
         xmreadline.register(impl["lua"])
     except (NameError, AttributeError):
         pass
-    pvt = python_version_tuple()
-    assert(pvt[0] == '3' and int(pvt[1]) >= 3)
     if platform in ("win32", "cygwin"):
         lgl._HOST = "windows"
     elif platform == "darwin":
@@ -57,7 +56,7 @@ def xm_machine_init():
         lgl._HOST = "unix"
     else:
         lgl._HOST = "unknown"
-    lgl._ARCH = machine()
+    lgl._ARCH = "i386" if fullmatch(r'i\d86', machine()) else machine()
     lgl._NULDEV = os.devnull
     version = xm_version()
     lgl._VERSION = "%d.%d.%d.%d" % (version["major"], version["minor"], version["alter"], version["build"])
@@ -76,5 +75,7 @@ def xm_machine_main(impl, argc, argv):
     return lgl._xmake_main()
 
 def main():
+    pvt = python_version_tuple()
+    assert(pvt[0] == '3' and int(pvt[1]) >= 4)
     machine = xm_machine_init()
     return xm_machine_main(machine, len(argv), argv)
