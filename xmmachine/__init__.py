@@ -4,6 +4,7 @@ from sys import argv, platform
 from platform import python_version_tuple, machine
 import os
 from xmversion import xm_version
+import xmbuiltins
 import xmos
 import xmpath
 import xmstring
@@ -34,6 +35,7 @@ def xm_machine_get_program_directory(impl):
 def xm_machine_init():
     impl = {"lua": LuaRuntime(unpack_returned_tuples=True)}
     lgl = impl["lua"].globals()
+    xmbuiltins.register(impl["lua"])
     xmos.register(impl["lua"])
     xmpath.register(impl["lua"])
     xmstring.register(impl["lua"])
