@@ -32,6 +32,9 @@ local table     = require("base/table")
 local utils     = require("base/utils")
 local string    = require("base/string")
 
+-- load py modules
+local pytime    = pyimport("time")
+
 -- save original interfaces
 os._uid         = os._uid or os.uid
 os._gid         = os._gid or os.gid
@@ -701,6 +704,11 @@ function os.versioninfo()
     -- cache it
     os._VERSIONINFO = os._VERSIONINFO or os._versioninfo()
     return os._VERSIONINFO
+end
+
+-- get millisecond Epoch Time
+function os.mclock()
+    return pytime.time() * 1000
 end
 
 -- return module
