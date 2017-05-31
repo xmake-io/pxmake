@@ -1,0 +1,16 @@
+version: v2.1.5.{build}
+image: Visual Studio 2015
+shallow_clone: true
+before_build:
+  - ps: Invoke-Webrequest 'http://luajit.org/download/LuaJIT-2.0.5.zip' -OutFile 'LuaJIT-2.0.5.zip'
+  - ps: Expand-Archive 'LuaJIT-2.0.5.zip' .
+  - ps: Remove-Item 'LuaJIT-2.0.5.zip'
+  - ps: Invoke-Webrequest 'https://github.com/scoder/lupa/archive/master.zip' -OutFile 'lupa-1.4.zip'
+  - ps: Expand-Archive 'lupa-1.4.zip' .
+  - ps: Remove-Item 'lupa-1.4.zip'
+  - ps: $env:Path='C:\Python34;C:\Python34\Scripts;C:\MinGW\bin;'+$env:Path
+  - ps: Set-Location 'LuaJIT-2.0.5\src'
+  - ps: mingw32-make 'BUILDMODE= static' 'XCFLAGS= -DLUAJIT_DISABLE_FFI -DLUAJIT_DISABLE_JIT' --trace
+
+build_script:
+  - ps: Write-Host 'stub'
