@@ -11,6 +11,14 @@ before_build:
   - ps: $env:Path='C:\Python34;C:\Python34\Scripts;C:\MinGW\bin;'+$env:Path
   - ps: Set-Location 'LuaJIT-2.0.5\src'
   - ps: mingw32-make 'BUILDMODE= static' 'XCFLAGS= -DLUAJIT_DISABLE_FFI -DLUAJIT_DISABLE_JIT' --trace
+  - ps: Set-Location '..\..'
+  - ps: Move-Item 'LuaJIT-2.0.5' 'lupa-master'
+  - ps: Set-Location 'lupa-master'
+  - cmd: pip install -r requirements.txt
+  - cmd: python setup.py build -c mingw32
+  - cmd: python setup.py install
+  - ps: Set-Location '..'
+  - ps: Remove-Item -Recurse 'lupa-master'
 
 build_script:
-  - ps: Write-Host 'stub'
+  - cmd: python setup.py install
