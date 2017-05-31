@@ -8,14 +8,13 @@ before_build:
   - ps: Invoke-Webrequest 'https://github.com/scoder/lupa/archive/master.zip' -OutFile 'lupa-1.4.zip'
   - ps: Expand-Archive 'lupa-1.4.zip' .
   - ps: Remove-Item 'lupa-1.4.zip'
-  - ps: $env:Path='C:\Python34;C:\Python34\Scripts;C:\MinGW\bin;'+$env:Path
+  - ps: $env:Path='C:\Python34;C:\Python34\Scripts;'+$env:Path
   - ps: Set-Location 'LuaJIT-2.0.5\src'
-  - ps: mingw32-make 'BUILDMODE= static' 'XCFLAGS= -DLUAJIT_DISABLE_FFI -DLUAJIT_DISABLE_JIT' --trace
+  - cmd: call "%VS140COMNTOOLS%\..\..\VC\vcvarsall.bat" x86&&msvcbuild.bat
   - ps: Set-Location '..\..'
   - ps: Move-Item 'LuaJIT-2.0.5' 'lupa-master'
   - ps: Set-Location 'lupa-master'
   - cmd: pip install -r requirements.txt
-  - cmd: python setup.py build -c mingw32
   - cmd: python setup.py install
   - ps: Set-Location '..'
   - ps: Remove-Item -Recurse 'lupa-master'
