@@ -1,5 +1,7 @@
 version: v2.1.5.{build}
-image: Visual Studio 2015
+image:
+  - Visual Studio 2015
+  - Visual Studio 2017
 shallow_clone: true
 before_build:
   - ps: Invoke-Webrequest 'http://luajit.org/download/LuaJIT-2.0.5.zip' -OutFile 'LuaJIT-2.0.5.zip'
