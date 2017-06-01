@@ -14,3 +14,7 @@ def register(lua):
     lgl.pydict = lambda table: dict(table.items())
     lgl.pyprint = print
     lgl.pyluatable = lua.table_from
+    lgl.pytypecall = lambda func, types, *args: func(*map(lambda tp, vl: tp(vl), types.values(), args))
+    lgl.pyint = int
+    lgl.pyfloat = float
+    lgl.pytype = type
