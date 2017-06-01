@@ -30,6 +30,7 @@ local os        = require("base/os")
 local path      = require("base/path")
 local utils     = require("base/utils")
 local table     = require("base/table")
+local winreg    = require("base/winreg")
 local raise     = require("sandbox/modules/raise")
 
 -- find file
