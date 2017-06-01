@@ -6,4 +6,4 @@ from xmtrace import xmtrace
 
 @xmtrace
 def xm_path_translate(lua, ph):
-    return expanduser(reduce(lambda a, b: join(a, b) if a and b else a + sep + b, split(r"\\|/", ph)))
+    return expanduser(reduce(lambda a, b: a + sep + b, split(r"\\|/", ph)))
