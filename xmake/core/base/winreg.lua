@@ -15,7 +15,7 @@ function winreg.query(keyname)
     elseif rootkey == "HKEY_USERS" then rootkey = pywinreg.HKEY_USERS
     else return nil, string.format("invalid registry path: %s", keyname) end
     local ok, rv = pypcall(function()
-        key = pywinreg.OpenKey(rootkey, keyname:sub(rootkey_end + 1, #keyname - r_value_end))
+        key = pytypecall(pywinreg.OpenKey, {pyint, 0}, rootkey, keyname:sub(rootkey_end + 1, #keyname - r_value_end))
         val, tp = pywinreg.QueryValueEx(key, keyname:reverse():sub(1, r_value_end - 1):reverse())
         key.Close()
         if tp == pywinreg.REG_SZ then return val end
