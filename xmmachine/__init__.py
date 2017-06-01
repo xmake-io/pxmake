@@ -5,6 +5,7 @@ from platform import python_version_tuple, machine
 from re import fullmatch
 import os
 from xmversion import xm_version
+from xmbase import pathjoin
 import xmbuiltins
 import xmos
 import xmpath
@@ -30,7 +31,7 @@ def xm_machine_get_program_file(impl):
 
 def xm_machine_get_program_directory(impl):
     lgl = impl["lua"].globals()
-    lgl._PROGRAM_DIR = path = os.path.abspath(os.getenv("XMAKE_PROGRAM_DIR")) if os.getenv("XMAKE_PROGRAM_DIR") else os.path.abspath(os.path.join(__file__, "..", "..", "xmake"))
+    lgl._PROGRAM_DIR = path = os.path.abspath(os.getenv("XMAKE_PROGRAM_DIR")) if os.getenv("XMAKE_PROGRAM_DIR") else os.path.abspath(pathjoin(__file__, "..", "..", "xmake"))
     return path
 
 def xm_machine_init():

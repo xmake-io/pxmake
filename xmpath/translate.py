@@ -1,4 +1,4 @@
-from os.path import join, expanduser
+from os.path import expanduser
 from os import sep
 from re import split
 from functools import reduce

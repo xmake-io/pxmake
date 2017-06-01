@@ -2,6 +2,7 @@ import os
 from os import path
 from xmtrace import xmtrace
 from xmerrno import set_errno
+from xmbase import pathjoin
 
 @xmtrace
 def xm_os_find(lua, rootdir, pattern, recurse, mode, excludes = None):
@@ -30,11 +31,11 @@ def xm_os_find(lua, rootdir, pattern, recurse, mode, excludes = None):
         return res
     try:
         if not recurse:
-            res = judge([path.join(rootdir, nm) for nm in os.listdir(rootdir)])
+            res = judge([pathjoin(rootdir, nm) for nm in os.listdir(rootdir)])
         else:
             tree = []
             for (dirpath, dirnames, filenames) in os.walk(rootdir):
-                tree += [path.join(dirpath, nm) for nm in dirnames + filenames]
+                tree += [pathjoin(dirpath, nm) for nm in dirnames + filenames]
             res = judge(tree)
     except OSError as e:
         set_errno(e.errno)
