@@ -1,10 +1,10 @@
 import lupa
 from lupa import LuaRuntime
 from sys import argv, platform
-from platform import python_version_tuple, machine
-from re import fullmatch
+from platform import python_version_tuple, architecture
 import os
 from xmversion import xm_version
+from xmbase import pathjoin
 import xmbuiltins
 import xmos
 import xmpath
@@ -30,7 +30,7 @@ def xm_machine_get_program_file(impl):
 
 def xm_machine_get_program_directory(impl):
     lgl = impl["lua"].globals()
-    lgl._PROGRAM_DIR = path = os.path.abspath(os.getenv("XMAKE_PROGRAM_DIR")) if os.getenv("XMAKE_PROGRAM_DIR") else os.path.abspath(os.path.join(__file__, "..", "..", "xmake"))
+    lgl._PROGRAM_DIR = path = os.path.abspath(os.getenv("XMAKE_PROGRAM_DIR")) if os.getenv("XMAKE_PROGRAM_DIR") else os.path.abspath(pathjoin(__file__, "..", "..", "xmake"))
     return path
 
 def xm_machine_init():
@@ -56,7 +56,8 @@ def xm_machine_init():
         lgl._HOST = "unix"
     else:
         lgl._HOST = "unknown"
-    lgl._ARCH = "i386" if fullmatch(r'i\d86', machine()) else machine()
+    # XXX: deal other arch
+    lgl._ARCH = "i386" if architecture()[0] == "32bit" else "x86_64"
     lgl._NULDEV = os.devnull
     version = xm_version()
     lgl._VERSION = "%d.%d.%d.%d" % (version["major"], version["minor"], version["alter"], version["build"])
@@ -76,6 +77,6 @@ def xm_machine_main(impl, argc, argv):
 
 def main():
     pvt = python_version_tuple()
-    assert(pvt[0] == '3' and int(pvt[1]) >= 4)
+    assert(pvt[0] == '3' and int(pvt[1]) >= 3)
     machine = xm_machine_init()
     return xm_machine_main(machine, len(argv), argv)
