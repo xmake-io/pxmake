@@ -8,7 +8,7 @@ before_build:
   - ps: Invoke-Webrequest 'https://github.com/scoder/lupa/archive/master.zip' -OutFile 'lupa-1.4.zip'
   - ps: Expand-Archive 'lupa-1.4.zip' .
   - ps: Remove-Item 'lupa-1.4.zip'
-  - ps: $env:Path='C:\Python34;C:\Python34\Scripts;'+$env:Path
+  - ps: $env:Path='C:\Python33;C:\Python33\Scripts;'+$env:Path
   - ps: Set-Location 'LuaJIT-2.0.5\src'
   - cmd: call "%VS140COMNTOOLS%\..\..\VC\vcvarsall.bat" x86&&msvcbuild.bat
   - ps: Set-Location '..\..'
