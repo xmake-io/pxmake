@@ -30,6 +30,7 @@ local os        = require("base/os")
 local table     = require("base/table")
 local utils     = require("base/utils")
 local string    = require("base/string")
+local winreg    = require("base/winreg")
 
 -- new filter instance
 function filter.new()
